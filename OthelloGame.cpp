@@ -34,25 +34,26 @@ bool IsValidMove(char board[BOARD_SIZE][BOARD_SIZE], int row, int col){
 }
 
 void ApplyMove(char board[BOARD_SIZE][BOARD_SIZE], int row
-   ,int col, char currentPlayer){
+   , int col, char currentPlayer){
    stack<char*> dir;
-   int player = ((currentPlayer == 'B')? 1:-1) ;
+   int player = ((currentPlayer == 'B') ? 1 : -1);
    for (int r = -1; r <= 1; r++){ //check every direction
       for (int c = -1; c <= 1; c++){
-         int bRow = row+r, bCol = col+c; //go in that direction 
+         int bRow = row + r, bCol = col + c; //go in that direction 
          while (InBounds(bRow, bCol) && (board[bRow][bCol] != 0)){ //while valid (in bound and not empty)
             if (board[bRow][bCol] != player) //true if that room contain enemy
                dir.push(&board[bRow][bCol]);
             else{ //room contain player
-               if (!dir.empty()){ 
+               if (!dir.empty()){
                   while (!dir.empty()){//traverse back
                      //(dir.pop()) = currentPlayer;
                      *(dir.top()) = currentPlayer;
                      dir.pop();
                   }
                   break;
-            }
+               }
                bRow += r, bCol += c;
+            }
          }
       }
    }
