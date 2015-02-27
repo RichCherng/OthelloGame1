@@ -44,8 +44,8 @@ void ApplyMove(char board[BOARD_SIZE][BOARD_SIZE], int row
             if (board[bRow][bCol] != player) //true if that room contain enemy
                dir.push(&board[bRow][bCol]);
             else{ //room contain player
-               if (!dir.empty()){
-                  while (!dir.empty()){
+               if (!dir.empty()){ 
+                  while (!dir.empty()){//traverse back
                      //(dir.pop()) = currentPlayer;
                      *(dir.top()) = currentPlayer;
                      dir.pop();
