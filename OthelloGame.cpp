@@ -24,13 +24,25 @@ void PrintBoard(char board[BOARD_SIZE][BOARD_SIZE]){
 }
 
 bool InBounds(int row, int col){
-   return ((row < BOARD_SIZE) && (row >= 0)) && ((col < BOARD_SIZE) && (col >= 0)) ? true : false;
+   return ((row < BOARD_SIZE) && (row >= 0)) &&
+      ((col < BOARD_SIZE) && (col >= 0)) ? true : false;
 }
 
 bool IsValidMove(char board[BOARD_SIZE][BOARD_SIZE], int row, int col){
    return (InBounds(row, col) && board[row][col] == '0') ? true : false;
 }
 
-void ApplyMove(char board[BOARD_SIZE][BOARD_SIZE], int row, int col, char currentPlayer){
-      
+void ApplyMove(char board[BOARD_SIZE][BOARD_SIZE], int row
+   ,int col, char currentPlayer){
+   int count = 0, player = ((currentPlayer == 'B')? 1:-1) ;
+   for (int r = -1; r <= 1; r++){
+      for (int c = -1; c <= 1; c++){
+         int bRow = row+r, bCol = col+c;
+         while (InBounds(bRow, bCol) && (board[bRow][bCol] != 0)){
+            if (board[bRow][bCol)
+
+               bRow++, bCol;
+         }
+      }
+   }
 }
