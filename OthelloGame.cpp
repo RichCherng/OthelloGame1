@@ -1,4 +1,5 @@
 #include <iostream>  
+#include <stack>
 #include "OthelloGame.h";
 
 using namespace std;
@@ -34,14 +35,21 @@ bool IsValidMove(char board[BOARD_SIZE][BOARD_SIZE], int row, int col){
 
 void ApplyMove(char board[BOARD_SIZE][BOARD_SIZE], int row
    ,int col, char currentPlayer){
+   stack<char*> dir;
    int count = 0, player = ((currentPlayer == 'B')? 1:-1) ;
    for (int r = -1; r <= 1; r++){
       for (int c = -1; c <= 1; c++){
          int bRow = row+r, bCol = col+c;
          while (InBounds(bRow, bCol) && (board[bRow][bCol] != 0)){
-            if (board[bRow][bCol)
-
-               bRow++, bCol;
+            if (board[bRow][bCol] != player) //true if that room contain enemy
+               count++;
+            else{ //room contain player
+               if (count > 0)
+                  dir.push(*board[bRow][bCol]);
+               else
+                  break;
+            }
+               bRow += r, bCol += c;
          }
       }
    }
