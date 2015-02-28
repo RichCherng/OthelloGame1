@@ -25,11 +25,12 @@ int main(char argc, char* args){
          cout << "Please choose a move" << endl;
          GetMove(&row, &col);
          if (!IsValidMove(Board, row, col)){
-            cout << "Invalid move.";
+            cout << "Invalid move." << endl;
          }
          else
             break;
       }
+      ApplyMove(Board, row, col, (turn % 2 == 0)?1:-1);
       turn++;
 
       //Board[row][col] = ((turn % 2) * 2) - 1;

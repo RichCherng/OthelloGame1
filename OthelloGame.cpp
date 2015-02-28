@@ -21,7 +21,7 @@ void PrintBoard(char board[BOARD_SIZE][BOARD_SIZE]){
             cout << "W ";
       }
    }
-   cout << endl;
+   cout << endl << endl;
 }
 
 bool InBounds(int row, int col){
@@ -35,21 +35,21 @@ bool IsValidMove(char board[BOARD_SIZE][BOARD_SIZE], int row, int col){
 void ApplyMove(char board[BOARD_SIZE][BOARD_SIZE], int row
    , int col, char currentPlayer){
    //stack<char*> dir;
-   int player = ((currentPlayer == 'B') ? 1 : -1);
+   board[row][col] = currentPlayer;
    for (int r = -1; r <= 1; r++){ //check every direction
       for (int c = -1; c <= 1; c++){
          int bRow = row + r, bCol = col + c, count = 0; //go in that direction 
          while (InBounds(bRow, bCol) && (board[bRow][bCol] != 0)){ //while valid (in bound and not empty)
-            if (board[bRow][bCol] != player) //true if that room contain enemy
+            if (board[bRow][bCol] != currentPlayer) //true if that room contain enemy
                count++;
             else{ //room contain player
                if (count > 0){
                   for (; count > 0; count--){
                      bRow--,bCol--;
-                     board[bRow][bCol] = player;
+                     board[bRow][bCol] = currentPlayer;
                   }
-                  break;
                }
+               break;
             }
             bRow += r, bCol += c;
          }
