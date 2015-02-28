@@ -45,7 +45,7 @@ void ApplyMove(char board[BOARD_SIZE][BOARD_SIZE], int row
             else{ //room contain player
                if (count > 0){
                   for (; count > 0; count--){
-                     bRow--,bCol--;
+                     bRow -= r,bCol -= c;
                      board[bRow][bCol] = currentPlayer;
                   }
                }
