@@ -25,12 +25,11 @@ void PrintBoard(char board[BOARD_SIZE][BOARD_SIZE]){
 }
 
 bool InBounds(int row, int col){
-   return ((row < BOARD_SIZE) && (row >= 0)) &&
-      ((col < BOARD_SIZE) && (col >= 0)) ? true : false;
+   return (row < BOARD_SIZE) && (row >= 0) && (col < BOARD_SIZE) && (col >= 0);
 }
 
 bool IsValidMove(char board[BOARD_SIZE][BOARD_SIZE], int row, int col){
-   return (InBounds(row, col) && board[row][col] == '0') ? true : false;
+   return (InBounds(row, col) && board[row][col] == '0');
 }
 
 void ApplyMove(char board[BOARD_SIZE][BOARD_SIZE], int row
@@ -57,4 +56,13 @@ void ApplyMove(char board[BOARD_SIZE][BOARD_SIZE], int row
 
       }
    }
+}
+
+void GetMove(int *row, int *col){
+   char tmp;
+   cin >> tmp >> *row >> tmp >> *col >> tmp;
+}
+
+int GetValue(char board[BOARD_SIZE][BOARD_SIZE]){
+
 }
