@@ -24,7 +24,7 @@ int main(char argc, char* args){
       while (true){
          cout << "Please choose a move" << endl;
          GetMove(&row, &col);
-         if (!IsValidMove(Board, row, col)){
+         if (!IsValidMove(Board, row, col) && (row != -1 && col != -1) ){
             cout << "Invalid move." << endl;
          }
          else
