@@ -29,7 +29,7 @@ bool InBounds(int row, int col){
 }
 
 bool IsValidMove(char board[BOARD_SIZE][BOARD_SIZE], int row, int col){
-   bool isPass = (row < 0) && (col < 0);
+   bool isPass = (row == -1) && (col == -1);
    return (InBounds(row, col) && board[row][col] == 0 || isPass);
 }
 
