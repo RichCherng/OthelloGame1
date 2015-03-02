@@ -25,8 +25,8 @@ int main(char argc, char* args){
          cout << "Please choose a move" << endl;
          GetMove(&row, &col);
          pass += (row == -1 && col == -1) ? 1 : - 0.5;
-         cout << "pass is : " << pass << endl;
-         if (!IsValidMove(Board, row, col) && (row != -1 && col != -1) ){
+         //cout << "pass is : " << pass << endl;
+         if (!IsValidMove(Board, row, col)){
             cout << "Invalid move. ";
          }
          else
@@ -36,9 +36,9 @@ int main(char argc, char* args){
       turn++;
    }
    cout << "Game over.";
-   if (GetValue > 0)
+   if (GetValue(Board) > 0)
       cout << "Black Win!" << endl;
-   else if (GetValue < 0)
+   else if (GetValue(Board) < 0)
       cout << "White Win!" << endl;
    else
       cout << "We have a tie!" << endl;
