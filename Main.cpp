@@ -24,19 +24,24 @@ int main(char argc, char* args){
       while (true){
          cout << "Please choose a move" << endl;
          GetMove(&row, &col);
-         pass += (row == -1 && col == -1) ? 1 : -1;
+         pass += (row == -1 && col == -1) ? 1 : - 0.5;
+         cout << "pass is : " << pass << endl;
          if (!IsValidMove(Board, row, col) && (row != -1 && col != -1) ){
-            cout << "Invalid move." << endl;
+            cout << "Invalid move. ";
          }
          else
             break;
       }
       ApplyMove(Board, row, col, (turn % 2 == 0)?1:-1);
       turn++;
-
-      //Board[row][col] = ((turn % 2) * 2) - 1;
    }
-   
+   cout << "Game over.";
+   if (GetValue > 0)
+      cout << "Black Win!" << endl;
+   else if (GetValue < 0)
+      cout << "White Win!" << endl;
+   else
+      cout << "We have a tie!" << endl;
 
    system("pause");
 }
