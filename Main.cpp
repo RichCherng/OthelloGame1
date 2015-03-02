@@ -13,8 +13,8 @@ int main(char argc, char* args){
    Board[4][4] = -1;
    Board[3][4] = 1;
    Board[4][3] = 1;
-   int turn = 0, row,col;
-   while (true){
+   int turn = 0, row = 0,col = 0,pass = 0;
+   while (pass < 2){
       PrintBoard(Board);
       if (turn % 2 == 0)
          cout << "Black's turn. ";
@@ -24,6 +24,7 @@ int main(char argc, char* args){
       while (true){
          cout << "Please choose a move" << endl;
          GetMove(&row, &col);
+         pass += (row == -1 && col == -1) ? 1 : -1;
          if (!IsValidMove(Board, row, col) && (row != -1 && col != -1) ){
             cout << "Invalid move." << endl;
          }
